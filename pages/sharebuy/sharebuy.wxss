@@ -1,0 +1,60 @@
+/*首页导航*/
+page{
+    color: #666666;
+    padding: 10rpx;
+}
+/*轮播图*/
+.sildes {
+    margin-top: 10rpx;
+    padding-bottom: 1%;
+}
+.sildes swiper {
+    height: 230rpx;
+}
+.sildes navigator {
+    width: 100%;
+    height: 100%;
+}
+.sildes image {
+    width: 100%;
+    height: 100%;
+}
+
+/*视频列表*/
+.video-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5rpx;
+    justify-content: space-between;
+}
+.video-item {
+    width: 48%;
+    margin-bottom: 20rpx;
+}
+.video-img {
+    position: relative;
+}
+.video-img image {
+    width: 100%;
+    border-radius: 15rpx;
+}
+.video-img .video-info {
+    position: absolute;
+    bottom: 10rpx;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    color: #ffffff;
+    font-size: 24rpx;
+}
+.video-title {
+    font-size: 28rpx;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}

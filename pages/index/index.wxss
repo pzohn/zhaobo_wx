@@ -1,0 +1,258 @@
+.page_container {
+  
+} 
+
+/*搜索begin*/
+.search{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding-bottom: 1px;
+  position: fixed;
+  top: 0rpx;
+  z-index: 99;
+  background: #f7f7f7;
+}
+.searchBg{
+  background-color:#f2f2f2;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 5px;
+  color: #999999;
+}
+.searchBg image{
+  margin-left: 5px;
+  margin-top:5px;
+}
+
+.search input{
+  height: 40px;
+  line-height: 40px;
+  font-size: 15px;
+  font-weight:200;
+}
+
+.btn1{
+  font-size: 18px;
+  font-weight:300;
+  line-height: 40px;
+  margin-left: 5%;
+  border:1px solid #3385ff;
+  width:30%;
+  text-align: center;
+  background-color: #3385ff;
+  border-radius: 5px;
+  color: #fff
+}
+/*搜索end*/
+
+
+/* DFrames begin*/
+.DFrames {
+  position: relative;
+  height: 256rpx;
+  padding-bottom: 50rpx;
+  background: #fff;
+  padding-top: 2%;
+  padding-left: 4%;
+}
+.layOut {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.layOut-item {
+  display: flex;
+  flex-direction: column;
+  width: 23%;
+  height: 162rpx;
+  text-align: center;
+  padding-left: 2%;
+}
+.layOut-item image {
+  width: 70%;
+  border-radius: 10px;
+  margin-top: 10%;
+}
+.layOut-item-text {
+  padding-top: 6rpx;
+  font-size: 24rpx;
+  color: rgb(102, 102, 102);
+  width: 70%;
+}
+/* DFrames end*/
+
+
+.video_container{
+  padding: 180rpx 25rpx;
+}
+
+/*轮播begin*/
+.video_swiper{
+  padding: 90rpx 25rpx;
+}
+swiper,swiper-item
+{
+   margin:0;
+   padding: 0;
+}
+
+.lunbo,.lunbo image{height: 330rpx;}
+.lunbo .wx-swiper-dots.wx-swiper-dots-horizontal{
+      margin-bottom: 10rpx;
+}
+.lunbo .wx-swiper-dot{
+    width: 14rpx;
+    display: inline-flex;
+    height: 14rpx;
+    vertical-align: sub; 
+    margin-left: 10rpx;
+    margin-right: 10rpx;
+    background:rgba(255,255,255,.5);
+    border-radius: 100%;
+}
+.lunbo .wx-swiper-dot::before{
+     content: '';
+     flex-grow: 1;
+} 
+.lunbo .wx-swiper-dot-active::before{
+     content: '';
+     flex-grow: 1;
+     background:rgba(255,255,255,1);
+     border-radius: 100%;
+}
+
+.slide-image{
+  width: 100%;vertical-align: top;display: block;
+}
+/*轮播end*/
+
+.page-recommend .items-bottom{
+  width: 94%;
+  margin: 0 auto;
+  padding-top: 20rpx;
+  }
+.page-recommend .items-div{
+display: inline-block;
+width: 16%;
+margin-right: 3.5%;
+text-align: center;
+font-size: 24rpx;
+color: #222;
+}
+.page-recommend .items-div image{
+  height: 100rpx;
+  width: 100rpx;
+  }
+.page-recommend .items-div:last-child{
+  margin-right: 0;
+}
+.page-recommend .items-div .items-content{
+  margin-bottom: 20rpx;
+}
+
+.page-recommend {
+  margin-top: 20rpx;
+  background-color: #fff;
+  width: 100%;
+  display: block;
+}
+
+.recommend-bottom .recommend-content-price{
+  font-size: 28rpx;
+  display: block;
+  color: red;
+}
+
+.hotgoodcontainer{
+    display:flex;
+    flex-wrap: wrap;
+    width:100%;
+}
+.gooditem{
+    width:33.333333%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    font-size:12px;
+    box-sizing:border-box;
+    border: 0.5px solid #f7f7f7;
+    padding-bottom:6px;
+}
+.productimg{
+   width:100%;
+   height:90%;
+}
+.imgview{
+  width:100%;
+  height:60px;
+}
+
+.bztj{
+  width: 100%;
+  background:url('https://www.gfcamps.cn/morningstar/byzt1.png') no-repeat center center;
+  background-size: cover;
+  height: 70px;
+  border-radius: 25rpx;
+  font-size: 14px;
+  margin-left: 5%;
+  text-align: center;
+  justify-content:center;
+  color: rgba(255,255,255,0);
+  margin-bottom: 2%;
+}
+
+.rxhw{
+  width: 60%;
+  background:url('https://www.gfcamps.cn/morningstar/dstj.png') no-repeat center center;
+  background-size: cover;
+  height: 50px;
+  border-radius: 25rpx;
+  font-size: 14px;
+  text-align: center;
+  color: rgba(255,255,255,0);
+  margin-bottom: 2%
+}
+
+.goodprice{
+  font-size: 25rpx;
+  color:orangered;
+}
+
+
+/*pro--begin*/
+.product{
+    background-color: white;
+    margin: 20rpx 20rpx 15rpx;
+    -moz-box-shadow:2rpx 2rpx 5rpx #969696;
+    -webkit-box-shadow:2rpx 2rpx 5rpx #969696;
+    box-shadow:2rpx 2rpx 5rpx #969696;
+    width: 95%;
+    border-radius: 10rpx;
+}
+.prod-content{
+    display: flex;
+    justify-content:center;
+    font-size: 12pt;
+    padding: 20rpx;
+}
+.pro-image {
+    width: 100%;
+    height: 350rpx;
+    border-radius: 10rpx;
+}
+.prod-title {
+    color: #353535;
+    
+}
+.prod-money{
+    color: #e64340;
+}
+.slide-image{
+    width: 100%;
+}
+/*pro--end*/

@@ -1,0 +1,112 @@
+<view class="content">
+  <view class="bg">
+    <view class="head">
+      <view class="headIcon">
+        <image src="{{avatarUrl}}" style="width:66px;height:66px;border-radius:66%"></image>
+      </view>
+      <view class="login">
+        <view class="authorize" bindtap="authorize">{{nickName}}</view>
+      </view>
+    </view>
+    <!-- <view class="myfen">
+      <view>我的积分：{{integral}}</view>
+      <view style="padding-top:20%">我的代金券：{{royalty}}</view>
+    </view> -->
+  </view>
+  <view class="hr"></view>
+  <view class="category">
+    <view class="category_item" wx:for="{{iconArray}}" wx:key="iconArray">
+      <view class="category_item_wrap" bindtap="onItemClick" id = "{{item.id}}" hidden="{{item.hide}}">
+        <view class="icon_wrap">
+          <image src="{{item.iconUrl}}" class="index_icon"></image>
+        </view>
+        <view class="category_item_text">
+          <text>{{item.iconText}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="category">
+    <view class="category_item" wx:for="{{tradeArray}}" wx:key="tradeArray">
+      <view class="category_item_wrap" bindtap="onItemClick" id = "{{item.id}}">
+        <view class="icon_wrap">
+          <image src="{{item.iconUrl}}" class="index_icon"></image>
+        </view>
+        <view class="category_item_text">
+          <text>{{item.iconText}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="list">
+    <!-- <view class="item" bindtap="list" id = "1">
+      <view class="name">全部订单</view>
+      <view class="detail">
+        <text>></text>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="item" bindtap="list" id = "2">
+      <view class="name">未支付</view>
+      <view class="detail">
+        <text>></text>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="item" bindtap="list" id = "3">
+      <view class="name">未发货</view>
+      <view class="detail">
+        <text>></text>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="item" bindtap="list" id = "4">
+      <view class="name">已完成</view>
+      <view class="detail">
+        <text>></text>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="hr"></view> -->
+    <!-- <view class="item" bindtap="collect">
+      <view class="name">我的收藏</view>
+      <view class="detail">
+        <text>></text>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="hr"></view> -->
+
+<!-- 
+      <view class="item" bindtap="address">
+      <view class="name">收货地址</view>
+      <view class="detail">
+        <text>></text>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="hr"></view> -->
+
+    <view class="item" bindtap="service">
+      <view class="name">我的ID</view>
+      <view class="detail">
+        <text>{{wx_id}}</text>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="hr"></view>
+
+    <!-- <button class="itembtn" open-type="contact">
+      <view class="btn_name">联系客服</view>
+      <view class="detail">
+        <text>></text>         
+      </view>
+    </button> -->
+    <view class="line"></view>
+    <view class="hr"></view>
+
+  </view>
+  <view class="line"></view>
+</view>

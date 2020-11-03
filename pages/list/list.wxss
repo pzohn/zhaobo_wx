@@ -1,0 +1,106 @@
+.video_container{
+  padding:25rpx;
+}
+.type-item{
+  border-radius: 10rpx;
+  position: relative;
+}
+
+.type-item + .type-item{
+  margin-top: 20rpx;
+}
+
+.type-img{
+  width: 100%;
+  height: 290rpx;
+  border-radius: 10rpx;
+  display: block;
+}
+
+.title{
+  display: flex;
+  flex-direction: row;
+  padding-top: 10px;
+}
+
+.title text{
+  left: 10rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  width: 100%;
+}
+
+.dingdan{
+  display: flex;
+  flex-direction: row;
+}
+
+.dingdan text{
+  left: 10rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  width: 50%;
+  padding-top: 5px;
+}
+
+.btn{
+  right: 10rpx;
+  width: 24%;
+  background:url('https://www.gfcamps.cn/sun/jxzf.png') no-repeat center center;
+  background-size: cover;
+  height: 28px;
+  border-radius: 25rpx;
+  font-size: 14px;
+  text-align: center;
+  color: rgba(255,255,255,0);
+}
+
+.btn1{
+  right: 10rpx;
+  width: 24%;
+  background:url('https://www.gfcamps.cn/sun/gbdd.png') no-repeat center center;
+  background-size: cover;
+  height: 28px;
+  border-radius: 25rpx;
+  font-size: 14px;
+  text-align: center;
+  color: rgba(255,255,255,0);
+}
+
+.btn2{
+  right: 10rpx;
+  width: 24%;
+  background:url('https://www.gfcamps.cn/sun/gbtk.png') no-repeat center center;
+  background-size: cover;
+  height: 28px;
+  border-radius: 25rpx;
+  font-size: 14px;
+  text-align: center;
+  color: rgba(255,255,255,0);
+}
+
+.btn3{
+  right: 10rpx;
+  width: 24%;
+  background:url('https://www.gfcamps.cn/sun/tjtk.png') no-repeat center center;
+  background-size: cover;
+  height: 28px;
+  border-radius: 25rpx;
+  font-size: 14px;
+  text-align: center;
+  color: rgba(255,255,255,0);
+}
+
+.listimg{
+  display: flex;
+  flex-direction: row;
+  overflow:auto;
+}
+.listimg image{
+    width: 150rpx;
+    height: 150rpx;
+    
+    margin-right: 20rpx;
+    flex-shrink: 0;
+    border-radius: 10rpx;
+}

@@ -1,0 +1,19 @@
+/* components/panel/index.wxss */
+
+.geek-panel-wrapper{
+  background: #F9F9F9;
+  overflow: hidden;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 15px 0;
+}
+
+.geek-panel-text{
+  font-size: 50rpx;
+  min-height: 50rpx;
+  margin: 40rpx 30rpx 80rpx 30rpx;
+  color: #666;
+  padding-bottom: 10rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+  display: block;
+}

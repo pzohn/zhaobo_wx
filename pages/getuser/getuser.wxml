@@ -1,0 +1,5 @@
+<view class="container">
+  <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">
+   点击授权使用珑玥聪
+  </button>
+</view>

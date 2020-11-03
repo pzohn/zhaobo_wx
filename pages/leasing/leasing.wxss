@@ -1,0 +1,38 @@
+.item{
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+.desc{
+  margin-left: 50px;
+  line-height: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title{
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.count{
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.address{
+  color:coral;
+}
+
+.phone{
+  color:blue;
+}
+
+.hr2{
+  height: 6px;
+  background-color: #cccccc;
+  opacity: 0.2;
+}

@@ -1,0 +1,141 @@
+@import "../template/baseNavigationBar.wxss";
+page {
+    background-color: #f3f3f3;
+}
+.order_address {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0rpx 20rpx 20rpx;
+    height: 200rpx;
+    line-height: 200rpx;
+    background: white;
+    border-radius: 10rpx;
+    padding: 30rpx;
+}
+
+.select_address {
+    color: #7e7e7e;
+}
+.icon-arrowright {
+  font-size: 20rpx;
+}
+.icon-map_line- {
+    margin-right: 10rpx;
+}
+
+
+.Receiving_address {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20rpx;
+    height: 200rpx;
+    background: white;
+    border-radius: 10rpx;
+    padding: 30rpx;
+}
+.name_iphone {
+    color: #7e7e7e;
+    font-size: 24rpx;
+}
+.address {
+    font-size: 32rpx;
+    padding: 20rpx 0;
+}
+
+.goods_msg {
+    display: flex;
+    margin: 20rpx;
+    background: white;
+    border-radius: 10rpx;
+    padding: 30rpx;
+    align-items: center;
+}
+.goods_img {
+    width: 150rpx;
+    height: 150rpx;
+    overflow: hidden;
+    margin-right: 20rpx;
+    flex-shrink: 0;
+}
+.goods_img image {
+  width:100%;
+  height:100%;   
+}
+
+.goods_content {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-size: 24rpx;
+}
+
+.goods_content_title{
+  font-size: 20rpx;
+}
+
+.goods_content_standards{
+  font-size: 20rpx;
+  padding-top: 20px;
+  color: #7e7e7e;
+}
+
+.goods_num {
+    flex: 1;
+    text-align: right;
+    font-size: 24rpx;
+    display: flex;
+    flex-direction: column;
+    color: #7e7e7e;
+}
+.goods_num_price {
+  padding-bottom: 20px; 
+}
+
+.msg_list {
+    margin: 20rpx;
+    background: white;
+    border-radius: 10rpx;
+    padding-bottom: 20%;
+}
+.msg_item {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20rpx;
+    padding: 30rpx 0;
+    border-bottom: 2rpx solid #f3f3f3;
+    font-size: 32rpx;
+}
+.Total {
+    text-align: right;
+    margin: 0 20rpx;
+    padding: 30rpx 0;
+    font-size: 32rpx;
+}
+.Total_price {
+    color: #ad0e12;
+}
+.order_pay {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 93rpx;
+    line-height: 93rpx;
+    justify-content: space-between;
+    background: white;
+ 
+}
+.submit_order {
+    width: 32%;
+    background: #ad0e12;
+    color: white;
+    font-size: 32rpx;
+    text-align: center;
+}
+.pay_money {
+    font-size: 32rpx;
+    margin-left: 30rpx;
+}

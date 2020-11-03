@@ -1,0 +1,76 @@
+<view class="page_container">
+  <view class="navbar">
+      <view class="search">
+          <view class="searchBg">
+            <view>
+              <image src="../../images/sousuo.png" style="width:25px;height:25px;padding-top:2px;padding-right:5px;"></image>
+            </view>
+            <view>
+              <input type="text" placeholder="请输入关键字" placeholder-class="holder" bindinput="accountInput"           />
+            </view>
+          </view>
+          <view class="btn1" bindtap="resetSearch">搜  索</view>
+        </view>
+  </view>
+
+  <view class='video_swiper' hidden="{{flag_1}}">
+    <swiper class="lunbo" id="lunbo" indicator-dots='{{indicatorDots}}' autoplay='{{autoplay}}' interval='{{interval}}' duration='{{duration}}' circular='{{circular}}'>
+      <swiper-item  wx:for="{{imgUrls}}" wx:key='{{index}}'>
+        <navigator url='{{item.link}}'>
+          <image src="{{item.url}}" class="slide-image" mode="aspectFill"></image>
+        </navigator> 
+      </swiper-item>
+    </swiper>
+
+    <view class="DFrames">
+      <view class="layOut">
+        <block wx:for="{{DFrames.layOut}}" wx:key="index_DFrames">
+          <view class="layOut-item" data-route="{{item.route}}" bindtap='goto'>
+            <image src="{{item.imgUrl}}"></image>
+            <text class="layOut-item-text">{{item.text}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <view class="page-recommend">
+      <view class='bztj'>精品推荐</view>
+
+      <view>
+        <view wx:for="{{proLst}}" class="product" >
+            <navigator url="{{item.link}}">
+                <image  src="{{item.url}}" class="pro-image" mode="widthFix" />
+                <view class="prod-content">
+                    <text class="prod-title">{{item.text}}</text>
+                    <!-- <text class="prod-money">{{item.title}}</text> -->
+                </view>
+            </navigator>
+        </view>
+      </view>
+
+    <!-- <view class='hotgoodcontainer'>
+        <view class='gooditem' wx:for="{{recommend}}" wx:key="recommend" wx:for-index="idx" wx:for-item="good" bindtap="recommendGood" id="{{good.id}}">
+          <view class='imgview'>
+            <image class='productimg' src='{{good.url}}'/>
+          </view>
+          <view>{{good.title}}</view>
+           <view class='goodprice'>{{good.price}}</view>
+        </view>
+      </view> -->
+    </view>
+
+    <!-- <view class="page-hotrec">
+      <view class='rxhw'>热销好物</view>
+        <view class='hotgoodcontainer'>
+        <view class='gooditem' wx:key="gooditem" wx:for="{{hotrec}}" wx:for-index="idx" wx:for-item="good" bindtap="hotrecGood" id="{{good.id}}">
+          <view class='imgview'>
+            <image class='productimg' src='{{good.url}}'/>
+          </view>
+          <view>{{good.title}}</view>
+           <view class='goodprice'>{{good.price}}</view>
+        </view>
+      </view>
+    </view> -->
+  </view>
+
+</view>

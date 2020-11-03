@@ -1,0 +1,64 @@
+<import src="../template/baseNavigationBar.wxml"/>
+<template is="navigationBar" data="{{title:'确认订单'}}"></template>
+<view class="order_address" bindtap="bindaddress" wx:if="{{hasAddr == false}}">
+    <view sclass="order_address_left">
+      <view class="select_address">
+        <image src="../../images/address.png" style="width:20px;height:20px;"></image>
+        <text class="iconfont icon-map_line-">点击去选择地址</text>
+      </view>
+    </view>
+    <view><text class="iconfont icon-arrowright">></text></view>
+</view>
+
+<view class="Receiving_address" bindtap="bindaddress" wx:if="{{hasAddr == true}}">
+    <view wx:if="{{fixed_address_flag == true}}">
+        <view class="name_iphone">{{address_info[0].province}} {{address_info[0].city}} {{address_info[0].area}}</view>
+        <view class="address">{{address_info[0].detail}}</view>
+        <view class="name_iphone">{{address_info[0].name}} {{address_info[0].phone}}</view>
+    </view>
+    <view wx:if="{{fixed_address_flag == false}}">
+      <view class="name_iphone">{{address_info[0].province}} {{address_info[0].city}} {{address_info[0].area}}</view>
+      <view class="address">{{address_info[0].detail}}</view>
+      <view class="name_iphone">{{address_info[0].name}} {{address_info[0].phone}}</view>
+    </view>
+    <view><text class="iconfont icon-arrowright">></text></view>
+</view>
+ 
+<view class='goods'>
+  <view class="goods_msg" wx:for="{{goods_info}}" wx:key="{{index}}">
+      <view class="goods_img"><image src="{{item.image}}" mode="aspectFill"></image></view>
+      <view class="goods_content">
+          <text class="goods_content_title">{{item.title}}</text>
+          <text class="goods_content_standards">规格:默认规格</text>
+      </view>
+      <view class="goods_num">
+        <text class="goods_num_price">￥{{item.price}}</text>
+        <text>×{{item.count}}</text>
+      </view>
+  </view>
+</view>
+
+
+ 
+<view class="msg_list">
+    <view class="msg_item">
+        <view>商品原价</view>
+        <view>￥{{total_price}}</view>
+    </view>
+    <view class="msg_item">
+        <view>配送费</view>
+        <view>包邮</view>
+    </view>
+    <!-- <view class="msg_item">
+        <view>代金券抵扣</view>
+        <view>-￥{{royalty_price}}</view>
+    </view> -->
+    <view class="Total">
+      总价 <text class="Total_price">￥{{all_total_price}}</text>
+    </view>
+</view>
+ 
+<view class="order_pay">
+    <view class="pay_money">付款 <text class="Total_price">￥{{all_total_price}}</text></view>
+    <view class="submit_order" bindtap="bindSubmitOrder">提交订单</view>
+</view>

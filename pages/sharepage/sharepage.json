@@ -1,0 +1,5 @@
+{
+    "usingComponents": {
+      "share-three": "../../components/share-award/index"
+    }
+}

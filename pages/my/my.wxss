@@ -1,0 +1,113 @@
+.content{
+  background-color: #E8E8ED;
+  height: 600px;
+}
+.bg{
+  width:100%;
+  background:no-repeat center center;
+  background-size: cover;
+  background-image: url('https://www.hattonstar.com/gfcamp/myback.jpg');
+  padding-top: 30px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+}
+.head{
+  display: flex;
+  flex-direction: row;
+}
+.headIcon{
+  margin: 10px;
+}
+.login{
+  color: #070000;
+  font-size: 15px;
+  font-weight: bold;
+  position: absolute;
+  left: 120px;
+  margin-top:30px;
+}
+
+.myfen{
+  padding-top:5%;
+  padding-left:40%;
+  color: #070000;
+  font-size: 16px;
+}
+.category {
+  padding: 15px 0 10px 0;
+  overflow: auto;
+  background-color: #FFF;
+  margin-bottom: 10px;
+}
+.category_item {
+  width: 20%;
+  float: left;
+  margin-bottom: 10px;
+}
+.icon_wrap {
+  width: 40px;
+  margin: 0 auto;
+  margin-bottom: 5px;
+}
+.index_icon {
+  width: 40px;
+  height: 40px;
+}
+.category_item_text {
+  text-align: center;
+  font-size: 13px;
+  color: #737373;
+}
+
+.account{
+  color: #737373;
+  font-size: 12px;
+  margin-top:10px;
+}
+.item{
+  display: flex;
+  flex-direction: row;
+  background-color: #ffffff;
+}
+
+.itembtn{
+  padding-left: 10px;
+  display: flex;
+  flex-direction: row;
+  background-color: #ffffff;
+}
+
+.btn_name{
+  padding-top:5px;
+  padding-bottom: 5px;
+  font-size: 15px;
+}
+
+.hr{
+  width: 100%;
+  height: 15px;
+}
+
+.name{
+  padding-top:15px;
+  padding-left: 10px;
+  padding-bottom: 15px;
+  font-size: 15px;
+}
+.detail{
+  font-size: 15px;
+  position: absolute;
+  right: 10px;
+  height: 50px;
+  line-height: 50px;
+  color: #888888;
+}
+.line{
+  border:1px solid #cccccc;
+  opacity: 0.2;
+}
+.count{
+  font-size: 13px;
+  color: #ff0000;
+}

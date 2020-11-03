@@ -1,0 +1,15 @@
+<template name="navigationBar">
+  <view>
+    <view class='nav bg-white' style='height:{{navH}}px'>
+      <view class='nav-title'>
+        {{title}}
+        <image src='../../images/back.png' mode='aspectFit' class='back' bindtap='navBack'></image> 
+      </view>
+    </view>
+    <scroll-view class='bg-gray overflow' style='height:calc(100vh - {{navH}}px)' scroll-y >
+      <view class='hidden'>
+        <!-- 正文 -->
+      </view>
+    </scroll-view>
+  </view>
+</template>

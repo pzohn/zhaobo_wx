@@ -1,0 +1,14 @@
+<template name="goods">  
+  <block wx:for = "{{array}}" wx:key="array">
+    <view class="item" bindtap="seeDetail" id="{{index}}">
+      <view class="desc">
+        <view class="title">{{item.name}}</view>
+        <view class="count">
+          <view class="address">地址：{{item.address}}</view>
+          <view class="phone">联系电话：{{item.phone}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="hr2"></view>
+  </block>
+</template>

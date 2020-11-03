@@ -1,0 +1,20 @@
+<view class="container-box">
+  <view class="img-box">
+      <image bindtap="previewImg" mode="scaleToFill" src="{{imagePath}}"></image>
+  </view>
+</view>
+<view hidden="{{maskHidden}}" class="mask"></view>
+<view class="canvas-box">
+  <canvas  hidden="{{canvasHidden}}" style="width: 686rpx;height: 686rpx;background:#f1f1f1;" canvas-id="mycanvas"/>
+</view>
+<view class="button">
+  <button class="btn" type="primary" disabled="{{save_flag}}" open-type="getuserinfo" bindtap="save">生成海报</button>
+  <button class="btn" type="primary" disabled="{{save_flag}}" open-type="share" bindtap="share">转发好友</button>
+</view>
+
+  <share-three
+    avatar='{{ shareThree.avatar }}'
+    nickname='{{ shareThree.nickname }}'
+    awardMoney='{{ shareThree.awardMoney }}'
+    showShareModel='{{ shareThree.showShareModel }}'
+  ></share-three>

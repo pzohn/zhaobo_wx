@@ -1,0 +1,83 @@
+
+<!--pages/shoporder/shoporder.wxml-->
+<view class= "header">
+  <view class="header_content">
+    <text class="header_title">我的分销</text>
+    <text class="header_item">{{myroyalty}}</text>
+  </view>
+</view>
+
+<view class="swiper-tab">
+    <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">分销记录</view>
+    <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab" hidden="{{!one_flag}}">二级代理</view>
+</view>
+
+<view class = "{{currentTab == 0 ? 'show':'hidden'}}" style='margin-bottom:50px;'>
+  <view class="order-shop-list">
+    <view wx:for="{{orderShopList}}">
+      <view class="orderShopList" data-item-index="{{index}}">
+        <view class="first-line">
+          <text>{{item.BillDate}}</text>
+          <text class="text-money">数量： {{item.royalty}}</text>
+        </view>
+        <view>
+          <text class="text-left">商品名称</text>
+          <text>{{item.BillNo}}</text>
+        </view>
+        <view>
+          <text class="text-left">购买地址</text>
+          <text>{{item.address}}</text>
+        </view>
+        <view>
+          <text class="text-left">购买人</text>
+          <text>{{item.EmpFullName}}</text>
+          <text class="text-money">¥ {{item.TotalTaxAmount}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class = "{{currentTab == 1 ? 'show':'hidden'}}" style='margin-bottom:50px;'>
+  <view class="order-shop-list">
+    <view wx:for="{{tradeShopList}}">
+      <view class="orderShopList" data-item-index="{{index}}">
+        <!-- <view class="first-line">
+          <text>{{item.BillDate}}</text>
+          <text class="text-money">消费代金卷：¥ {{item.royalty}}</text>
+        </view>
+        <view>
+          <text class="text-left">商品名称</text>
+          <text>{{item.BillNo}}</text>
+        </view>
+        <view>
+          <text class="text-left">交易单号</text>
+          <text>{{item.EmpFullName}}</text>
+          <text class="text-money">消费：¥ {{item.TotalTaxAmount}}</text>
+        </view> -->
+        <view class="first-line">
+          <text>{{item.BillDate}}</text>
+          <text class="text-money">数量： {{item.royalty}}</text>
+        </view>
+        <view>
+          <text class="text-left">分销商</text>
+          <text>{{item.share}}</text>
+        </view>
+        <view>
+          <text class="text-left">商品名称</text>
+          <text>{{item.BillNo}}</text>
+        </view>
+        <view>
+          <text class="text-left">购买地址</text>
+          <text>{{item.address}}</text>
+        </view>
+        <view>
+          <text class="text-left">购买人</text>
+          <text>{{item.EmpFullName}}</text>
+          <text class="text-money">¥ {{item.TotalTaxAmount}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

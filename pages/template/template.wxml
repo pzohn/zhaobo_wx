@@ -1,0 +1,16 @@
+<template name="goods">  
+  <block wx:for = "{{array}}" wx:key="array">
+    <view class="item" bindtap="seeDetail" id="{{index}}">
+      <view> <image src="{{item.img}}" style="width:136px;height:136px;"></image> </view>
+      <view class="desc">
+        <view class="title">{{item.title}}</view>
+        <view class="count">
+          <view class="company">{{item.company}}</view>
+          <view class="city">{{item.city}}</view>
+          <view class="price">{{item.price_day}} {{item.price_month}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="hr2"></view>
+  </block>
+</template>

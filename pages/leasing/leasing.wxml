@@ -1,0 +1,5 @@
+<view class="hr"></view>
+  <import src="../template/leasing_template" />
+  <view class="list">
+    <template is="goods" data="{{array}}" />
+  </view>

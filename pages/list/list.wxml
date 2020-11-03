@@ -1,0 +1,38 @@
+<view class='video_container'>
+  <view class='type-item' wx:for="{{activity}}" wx:key="{{index}}" >
+  <view wx:if="{{item.count == 1}}">
+    <image class='type-img' src='{{item.img}}' mode='aspectFill' data-videoid="{{item.id}}"  data-index="{{item.index}}" bindtap="gotoDetail"></image>
+    <view class='title'>
+        <text>{{item.name}}</text>
+    </view>
+  </view>
+  <view wx:elif="{{item.count > 1}}">
+    <view class="listimg" data-videoid="{{item.id}}"  data-index="{{item.index}}" bindtap="gotoDetail">
+      <view wx:for="{{item.detail}}" wx:key="{{index}}" wx:for-item="detailitem">
+        <image src='{{detailitem.img}}' mode='aspectFill'></image>      
+      </view>
+    </view>
+
+  </view>
+
+    <view class='title'>
+        <text>订单时间：{{item.date}}</text>
+    </view>
+    <view class='title'>
+        <text>订单编号：{{item.out_trade_no}}</text>
+    </view>
+    <!-- <view class='title'>
+        <text>代金券抵扣：￥{{item.royalty_charge}}</text>
+    </view> -->
+    <view class='title'style="color:green">
+        <text>实际付款：￥{{item.total_charge}}</text>
+    </view> 
+    <view class='dingdan'>
+        <text style='color:{{item.color}}'>订单状态：{{item.status}}</text>
+        <button class='btn' data-id="{{item.trade_id}}"  bindtap='pay' hidden='{{item.payhide}}'>继续支付</button>
+        <button class='btn1' data-id="{{item.trade_id}}"  bindtap='delete' hidden='{{item.deletehide}}'>关闭订单</button>
+        <!-- <button class='btn2' data-id="{{item.trade_id}}"  bindtap='deleteRefund' hidden='{{item.refundhide}}'>关闭退款</button>
+        <button class='btn3' data-id="{{item.trade_id}}"  bindtap='refund' hidden='{{item.refund}}'>提交退款</button>        -->
+    </view>
+  </view>
+</view>

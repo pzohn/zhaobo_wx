@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/indexdetail/indexdetail",
+    "pages/sharebuy/sharebuy",
+    "pages/sharepage/sharepage",
+    "pages/phone/phone",
+    "pages/getuser/getuser",
+    "pages/certmake/certmake",
+    "pages/userinfo/userinfo",
+    "pages/phonelogin/phonelogin",
+    "pages/detail/detail",
+    "pages/my/my",
+    "pages/search/search",
+    "pages/collect/collect",
+    "pages/list/list",
+    "pages/newaddress/newaddress",
+    "pages/editaddress/editaddress",
+    "pages/cart/cart",
+    "pages/royalty/royalty",
+    "pages/listdetail/listdetail",
+    "pages/leasing/leasing"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "珑玥聪",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "selectedColor": "#E4393C",
+    "list": [
+      {
+        "pagePath": "pages/indexdetail/indexdetail",
+        "text": "首页",
+        "iconPath": "/images/home-1.png",
+        "selectedIconPath": "/images/home-2.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "个人中心",
+        "iconPath": "/images/me-1.png",
+        "selectedIconPath": "/images/me-2.png"
+      }
+    ]
+  }
+}

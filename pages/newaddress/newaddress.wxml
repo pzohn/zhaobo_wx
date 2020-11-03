@@ -1,0 +1,40 @@
+<view class="user_input">
+	<view class="users_detail flexRowBetween">
+		<view class="input_note">收货人:</view>
+		<input placeholder="请输入收货人" bindinput="accountInput" id = "1"></input>
+	</view>
+</view>
+<view class="user_input">
+	<view class="users_detail flexRowBetween">
+		<view class="input_note">手机号码:</view>
+		<input placeholder="请输入手机号码" type="number" style="width:64%;" bindinput="accountInput" id = "2"></input>
+		<view class="address_right" style="width:13%;">
+			<text>+86</text>
+		</view>
+	</view>
+</view>
+<view class="user_input">
+	<view class="users_detail flexRowBetween">
+		<view class="input_note">所在地区:</view>
+		
+		<picker mode="region" class="" value="{{region}}" custom-item="{{customItem}}" bindchange="bindRegionChange" style="width:77%;position:relative;right:0rpx;align-items:center;">
+		<view mode="region" style="width:95%;float:left;font-size:30rpx;color:#000000;">{{region[0]}} {{region[1]}} {{region[2]}}</view>
+		</picker>
+	</view>
+</view>
+<view class="user_input">
+	<view class="users_detail flexRowBetween">
+		<view class="input_note">详细地址:</view>
+		<input placeholder="如街道，门牌号" bindinput="accountInput" id = "3"></input>
+	</view>
+</view>
+<!-- <view class="user_input flexRowBetween">
+	<view class="input_note address_set">设为默认地址</view>
+	<view class="body-view">
+		<switch bindchange="switch2Change"/>
+	</view>
+</view> -->
+<view class="submit_info" bindtap="backAddress">
+	保存
+</view>
+

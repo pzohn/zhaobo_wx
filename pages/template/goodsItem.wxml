@@ -1,0 +1,19 @@
+
+
+
+<template name="goodsItem">
+
+  <!--左边和 右边 个数  -->
+  <view class="leftAndNum dd-row dd-h-2side dd-v-center">
+    <!--左边和 右边 菜名  -->
+    <view class="dd-row dd-h-2side dd-v-center" bindtap="detail">
+      <!--左边 菜的图片  -->
+      <view class='img'>
+        <image src="{{item2.pic}}" style="width:120px;height:100px;" />
+      </view>
+      <!--菜的名字  -->
+      <view class="goodsName">{{item2.name}}</view>
+    </view>
+  </view>
+
+</template>
