@@ -135,6 +135,15 @@ page {
     font-size: 32rpx;
     text-align: center;
 }
+
+.submit_order_down {
+    width: 32%;
+    background: orange;
+    color: white;
+    font-size: 32rpx;
+    text-align: center;
+}
+
 .pay_money {
     font-size: 32rpx;
     margin-left: 30rpx;

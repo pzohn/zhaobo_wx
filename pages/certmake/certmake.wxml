@@ -60,5 +60,6 @@
  
 <view class="order_pay">
     <view class="pay_money">付款 <text class="Total_price">￥{{all_total_price}}</text></view>
-    <view class="submit_order" bindtap="bindSubmitOrder">提交订单</view>
+    <view class="submit_order" bindtap="bindSubmitOrder">直接付款</view>
+    <view class="submit_order_down" bindtap="bindSubmitDownOrder">线下付款</view>
 </view>

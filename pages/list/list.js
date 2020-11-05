@@ -32,7 +32,7 @@ Page({
     } else if (id == 5) {
       url = 'https://www.hattonstar.com/getOrderRefundForPerson'
       page.setData({itemOnFlag:false})
-    } 
+    }
     wx.request({
       url: url,
       data: {
@@ -81,6 +81,7 @@ Page({
             object.payhide = true;
             object.deletehide = true;
             object.refundhide = true;
+            object.status = '线下待付款'
           }else {
             object.refund = true;
             object.payhide = true;

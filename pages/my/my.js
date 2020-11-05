@@ -63,6 +63,11 @@ Page({
       //   "id": 31
       // },
       {
+        "iconUrl": '../../images/dfh.png',
+        "iconText": '线下付款',
+        "id": 31
+      },
+      {
         "iconUrl": '../../images/ywc.png',
         "iconText": '已完成',
         "id": 41

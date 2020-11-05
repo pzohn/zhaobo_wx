@@ -27,7 +27,8 @@ Page({
     cart_ids: [], // 购物车商品id
     type:'',
     fixed_address_flag:false,
-    fixed_address:[]
+    fixed_address:[],
+    down_flag:false
   },
   //选择地址
   bindaddress: function () {
@@ -80,6 +81,13 @@ Page({
   },
   //  提交订单
   bindSubmitOrder: function (e) {
+    this.setData({down_flag:false});
+    this.doDeal();
+  },
+
+  //  线下订单
+  bindSubmitDownOrder: function (e) {
+    this.setData({down_flag:true});
     this.doDeal();
   },
 
@@ -162,6 +170,56 @@ Page({
                   'complete': function (res) {
                   }
                 })
+            },
+            fail: function (res) {
+            }
+          })
+        }
+      }
+    })
+  },
+
+  dealTradeDown() {
+    var wxUserInfo = wx.getStorageSync('wxUserInfo');
+    if (wxUserInfo.nickName == undefined) {
+      app.globalData.authorizeFlag = false;
+      this.authorize();
+      return;
+    }
+
+    var page = this;
+    wx.login({
+      success: res => {
+        var code = res.code;
+        if (code) {
+          wx.request({
+            url: 'https://www.hattonstar.com/onPayShoppingDown',
+            data: {
+              js_code: code,
+              detail_id: page.data.detail_id,
+              wx_id: app.globalData.wx_id,
+              num: page.data.goods_count,
+              address_id: page.data.address_id,
+              name: wxUserInfo.nickName,
+              share_id: app.globalData.share_id,
+              use_royalty: page.data.royalty_price,
+              total_fee:page.data.all_total_price,
+              shop_id: app.globalData.shop_id
+            },
+            method: 'POST',
+            success: function (res) {
+              wx.showToast({
+                title: '支付成功',
+                icon: 'success',
+                duration: 2000,
+                success: function () {
+                  setTimeout(function () {
+                    wx.switchTab({
+                      url: '../my/my'
+                    })
+                  }, 2000) //延迟时间
+                }
+              });
             },
             fail: function (res) {
             }
@@ -622,7 +680,11 @@ Page({
           if (page.data.all_total_price == 0) {
             page.dealTradeFree();
           } else {
-            page.dealTrade();
+            if (page.data.down_flag == true){
+              page.dealTradeDown();
+            }else{
+              page.dealTrade();
+            }
           }
         }
       },
