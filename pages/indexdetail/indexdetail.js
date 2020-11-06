@@ -10,7 +10,17 @@ Page({
   },
 
   onShow: function () {
-    
+    var id = 0;
+    this.initData(id);
+    if (id == 18) {
+      this.setData({ info_flag: true,
+        btn_type:'btn_gonggao' })
+    }else {
+      this.setData({
+        info_flag: false,
+        btn_type: 'btn'
+      })     
+    }
   },
 
   //事件处理函数

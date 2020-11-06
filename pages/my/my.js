@@ -134,7 +134,20 @@ Page({
       wx.navigateTo({
         url: '../getuser/getuser'
       });
+      return;
     }
+    wx.showModal({
+      content: '更新授权信息',
+      success: function (res) {
+        if (res.confirm) {
+          wx.navigateTo({
+            url: '../getuser/getuser'
+          });
+          return;
+        } else if (res.cancel) {
+        }
+      }
+    })
   },
 
   onItemClick: function (e) {
