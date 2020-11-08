@@ -81,14 +81,34 @@ Page({
   },
   //  提交订单
   bindSubmitOrder: function (e) {
-    this.setData({down_flag:false});
-    this.doDeal();
+    var that = this
+    wx.showModal({
+      title: '温馨提示',
+      icon: 'success',
+      content:'默认物流发货，如需其他方式发货，自行承担',
+      success: function (res) {
+        if (res.confirm) {
+          this.setData({down_flag:false});
+          this.doDeal();
+        }
+      }
+    });
   },
 
   //  线下订单
   bindSubmitDownOrder: function (e) {
-    this.setData({down_flag:true});
-    this.doDeal();
+    var that = this
+    wx.showModal({
+      title: '温馨提示',
+      icon: 'success',
+      content:'默认物流发货，如需其他方式发货，自行承担',
+      success: function (res) {
+        if (res.confirm) {
+          that.setData({down_flag:true});
+          that.doDeal();
+        }
+      }
+    });
   },
 
   delCerts(list) {

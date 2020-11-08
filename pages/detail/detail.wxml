@@ -122,11 +122,6 @@
     活动结束无条件退货（需包装完整，不影响第二次销售），如需退货，自行承担邮费；额外赠送礼品的不能退货。
   </text>
 </view>
-<view class="modal-input">
-  <text>
-    默认物流发货，如需其他方式发货，自行承担。
-  </text>
-</view>
 </view>
 <view class="modal-footer">
 <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>

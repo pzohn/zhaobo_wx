@@ -228,7 +228,6 @@ Page({
 
   onLoad: function (options) {
     this.setData({ wx_id: app.globalData.wx_id})
-    this.initUser();
     var wxUserInfo = wx.getStorageSync('wxUserInfo');
     if (wxUserInfo.nickName == undefined){
       app.globalData.authorizeFlag = false;
@@ -264,6 +263,7 @@ Page({
     }
     this.initCert();
     this.initMyFen();
+    this.initUser();
   },
 
   initCert: function () {
@@ -313,19 +313,47 @@ Page({
   },
 
   initUser: function () {
-    if (app.globalData.share_user_flag == 1){
-      
-      var iconArray = this.data.iconArray;
-      for (var index in iconArray) {
-        var item = iconArray[index];
-        if (item.id == 3)
+    this.initShareForZhaobo();
+  },
+
+  initShareForZhaobo: function () {
+    var that = this
+    wx.request({
+      url: 'https://www.hattonstar.com/IsShareForZhaobo',
+      data: {
+        wx_id: app.globalData.wx_id
+      },
+      method: 'POST',
+      success: function (res) {
+        console.log(res)
+        if (res.data == 1){
+          var iconArray = that.data.iconArray;
+          for (var index in iconArray) {
+            var item = iconArray[index];
+            if (item.id == 3)
+            {
+              item.hide = false
+              iconArray[index] = item
+              that.setData({ iconArray: iconArray})
+            }
+         }
+        }else
         {
-          item.hide = false
-          iconArray[index] = item
-          this.setData({ iconArray: iconArray})
+          var iconArray = that.data.iconArray;
+          for (var index in iconArray) {
+            var item = iconArray[index];
+            if (item.id == 3)
+            {
+              item.hide = true
+              iconArray[index] = item
+              that.setData({ iconArray: iconArray})
+            }
+         }
         }
-     }
-    }
+      },
+      fail: function (res) {
+      }
+    })
   },
 
   /**
