@@ -5,7 +5,8 @@ Page({
     myroyalty:0,
     orderShopList: [],
     tradeShopList: [],
-    one_flag:true
+    one_flag:true,
+    manage_flag:false
   },
 
   clickTab: function (e) {
@@ -20,6 +21,14 @@ Page({
   },
 
   onLoad: function () {
+    if (app.globalData.manger_flag == true){
+      this.manger();
+    }else{
+      this.share();
+    }
+  },
+
+  share: function () {
     var page = this;
     wx.request({
       url: 'https://www.hattonstar.com/getShareForZhaobo',
@@ -38,17 +47,18 @@ Page({
           object.TotalTaxAmount = res.data.tradesOne[index].charge;
           object.royalty = res.data.tradesOne[index].num;
           object.address = res.data.tradesOne[index].trade_addr;
+          object.share = '';
           orderShopList[index] = object;
         }
         for (var i in res.data.tradesTwo) {
           var object = new Object();
-          object.BillDate = res.data.tradesTwo[index].time;
-          object.BillNo = res.data.tradesTwo[index].body;
-          object.EmpFullName = res.data.tradesTwo[index].trade_name;
-          object.TotalTaxAmount = res.data.tradesTwo[index].charge;
-          object.royalty = res.data.tradesTwo[index].num;
-          object.address = res.data.tradesTwo[index].trade_addr;
-          object.share = res.data.tradesTwo[index].share_name;
+          object.BillDate = res.data.tradesTwo[i].time;
+          object.BillNo = res.data.tradesTwo[i].body;
+          object.EmpFullName = res.data.tradesTwo[i].trade_name;
+          object.TotalTaxAmount = res.data.tradesTwo[i].charge;
+          object.royalty = res.data.tradesTwo[i].num;
+          object.address = res.data.tradesTwo[i].trade_addr;
+          object.share = res.data.tradesTwo[i].share_name;
           tradeShopList[i] = object;
         }
         page.setData({
@@ -61,5 +71,41 @@ Page({
       fail: function (res) {
       }
     })
-  }
+  },
+
+  manger: function () {
+    var page = this;
+    wx.request({
+      url: 'https://www.hattonstar.com/getShareForZhaoboEx',
+      data: {
+        
+      },
+      method: 'POST',
+      success: function (res) {
+        var orderShopList = [];
+        var tradeShopList = [];
+        for (var i in res.data.tradesTwo) {
+          var object = new Object();
+          object.BillDate = res.data.tradesTwo[i].time;
+          object.BillNo = res.data.tradesTwo[i].body;
+          object.EmpFullName = res.data.tradesTwo[i].trade_name;
+          object.TotalTaxAmount = res.data.tradesTwo[i].charge;
+          object.royalty = res.data.tradesTwo[i].num;
+          object.address = res.data.tradesTwo[i].trade_addr;
+          object.share = res.data.tradesTwo[i].share_name;
+          orderShopList[i] = object;
+        }
+        page.setData({
+          orderShopList: orderShopList,
+          tradeShopList: tradeShopList,
+          myroyalty: res.data.count,
+          one_flag:false,
+          manage_flag:true
+        });
+      },
+      fail: function (res) {
+      }
+    })
+  },
+
 })

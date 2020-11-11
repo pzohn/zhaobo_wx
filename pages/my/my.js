@@ -337,6 +337,7 @@ Page({
   },
 
   initShareForZhaobo: function () {
+    app.globalData.manger_flag = false
     var that = this
     wx.request({
       url: 'https://www.hattonstar.com/IsShareForZhaobo',
@@ -368,6 +369,7 @@ Page({
               iconArray[index] = item
               that.setData({ iconArray: iconArray,person_flag:false,manger_flag:true})
             }
+            app.globalData.manger_flag = true
          }
         }else
         {

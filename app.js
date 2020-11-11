@@ -128,6 +128,7 @@ App({
     fixed_address_flag:false,
     leasing_id: 0,
     notice_flag:0,
-    share_user_flag:0
+    share_user_flag:0,
+    manger_flag:false
   }
 })

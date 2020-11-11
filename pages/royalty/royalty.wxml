@@ -20,6 +20,10 @@
           <text>{{item.BillDate}}</text>
           <text class="text-money">数量： {{item.royalty}}</text>
         </view>
+        <view hidden="{{!manage_flag}}">
+          <text class="text-left">分销商</text>
+          <text>{{item.share}}</text>
+        </view>
         <view>
           <text class="text-left">商品名称</text>
           <text>{{item.BillNo}}</text>
