@@ -27,8 +27,21 @@
     </view>
   </view>
 
-  <view class="category">
+  <view class="category" hidden="{{manger_flag}}">
     <view class="category_item" wx:for="{{tradeArray}}" wx:key="tradeArray">
+      <view class="category_item_wrap" bindtap="onItemClick" id = "{{item.id}}">
+        <view class="icon_wrap">
+          <image src="{{item.iconUrl}}" class="index_icon"></image>
+        </view>
+        <view class="category_item_text">
+          <text>{{item.iconText}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="category" hidden="{{person_flag}}">
+    <view class="category_item" wx:for="{{tradeArrayEx}}" wx:key="tradeArrayEx">
       <view class="category_item_wrap" bindtap="onItemClick" id = "{{item.id}}">
         <view class="icon_wrap">
           <image src="{{item.iconUrl}}" class="index_icon"></image>

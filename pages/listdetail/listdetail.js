@@ -30,6 +30,8 @@ Page({
     status: '',
     page_id:0,
     btn_hide:true,
+    btn_hide_ex:false,
+    close_flag:false,
     fixed_address_flag: false
   },
 
@@ -78,7 +80,28 @@ Page({
     this.delete()
   },
 
+  bindCloseOrder_ex: function (e) {
+    if (this.data.close_flag == true){
+      wx.showModal({
+        title: '错误提示',
+        content: '交易已付款,不能关闭交易!',
+        showCancel:false,
+        success: function (res) {
+          if (res.confirm) {
+          }
+        }
+      })
+    }else{
+      this.delete()
+    }
+  },
+
+  bindSubmitOrder_ex: function (e) {
+    this.finish()
+  },
+
   typeHandler: function (e) {
+    return;
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '../detail/detail?id=' + id
@@ -189,6 +212,52 @@ Page({
     })
   },
 
+  finish: function () {
+    var page = this
+    wx.showModal({
+      title: '完成订单',
+      content: '确认完成订单吗?',
+      success: function (res) {
+        if (res.confirm) {
+          wx.request({
+            url: 'https://www.hattonstar.com/finishOrder',
+            data: {
+              id: app.globalData.listdetail.trade_id
+            },
+            method: 'POST',
+            success: function (res) {
+              wx.showToast({
+                title: '完成订单成功',
+                icon: 'success',
+                duration: 2000,
+                success: function () {
+                  setTimeout(function () {
+                    //要延时执行的代码
+                    wx.redirectTo({
+                      url: '../list/list?type=' + page.data.page_id
+                    })
+                  }, 2000)
+                }
+              });
+            },
+            fail: function (res) {
+              wx.showModal({
+                title: '错误提示',
+                content: '服务器无响应，请联系工作人员!',
+                success: function (res) {
+                  if (res.confirm) {
+                  } else if (res.cancel) {
+                  }
+                }
+              })
+            }
+          })
+        }
+      }
+    })
+  },
+
+
   //返回上一页
   navBack: function () {
     wx.navigateBack({
@@ -264,6 +333,9 @@ Page({
     var status = app.globalData.listdetail.status;
     if (status == '待付款'){
       this.setData({btn_hide:false})
+    }
+    if (status == '待发货'){
+      this.setData({close_flag:true})
     } 
     this.setData({
       goods_info: goods_info,

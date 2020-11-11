@@ -57,3 +57,8 @@
     <view class="close_order" bindtap="bindCloseOrder">关闭订单</view>
     <view class="submit_order" bindtap="bindSubmitOrder">继续支付</view>
 </view>
+
+<view class="order_pay" hidden="{{btn_hide_ex}}">
+    <view class="close_order_ex" bindtap="bindCloseOrder_ex">关闭订单</view>
+    <view class="submit_order_ex" bindtap="bindSubmitOrder_ex">完成订单</view>
+</view>

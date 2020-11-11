@@ -29,14 +29,21 @@ Page({
       url = 'https://www.hattonstar.com/getOrderUnreceiveForPerson'
     } else if (id == 4) {
       url = 'https://www.hattonstar.com/getOrderFinishForPerson'
-    } else if (id == 5) {
+    } else if (id == 7) {
+      url = 'https://www.hattonstar.com/getOrderAllForShopManger'
+    }else if (id == 8) {
+      url = 'https://www.hattonstar.com/getOrderAllForShopMangerUnFinish'
+    }else if (id == 9) {
+      url = 'https://www.hattonstar.com/getOrderAllForShopMangerFinish'
+    }else if (id == 5) {
       url = 'https://www.hattonstar.com/getOrderRefundForPerson'
       page.setData({itemOnFlag:false})
     }
     wx.request({
       url: url,
       data: {
-        wx_id: app.globalData.wx_id
+        wx_id: app.globalData.wx_id,
+        shop_id: app.globalData.shop_id
       },
       method: 'POST',
       success: function (res) {

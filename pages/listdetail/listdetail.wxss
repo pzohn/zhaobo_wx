@@ -141,3 +141,20 @@ page {
     font-size: 32rpx;
     margin-left: 30rpx;
 }
+
+
+.submit_order_ex {
+    width: 40%;
+    background: #ad0e12;
+    color: white;
+    font-size: 32rpx;
+    text-align: center;
+}
+
+.close_order_ex {
+    width: 40%;
+    background: #49bd13;
+    color: white;
+    font-size: 32rpx;
+    text-align: center;
+}

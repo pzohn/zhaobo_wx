@@ -11,6 +11,8 @@ Page({
     wx_id:0,
     royalty:0,
     integral:0,
+    person_flag:true,
+    manger_flag:false,
     iconArray: [
       // {
       //   "iconUrl": 'https://www.hattonstar.com/gfcamp/info.png',
@@ -28,16 +30,20 @@ Page({
         "iconText": '我的分销',
         "id": 3,
         "hide":true
-      },
+      }
+      // ,
       // {
       //   "iconUrl": '../../images/refund.png',
-      //   "iconText": '我的退款',
-      //   "id": 4
-      // },
+      //   "iconText": '退款处理',
+      //   "id": 4,
+      //   "hide":false
+      // }
+      // ,
       // {
       //   "iconUrl": 'https://www.hattonstar.com/gfcamp/card.png',
-      //   "iconText": '积分商城',
-      //   "id": 5
+      //   "iconText": '交易处理',
+      //   "id": 5,
+      //   "hide":false
       // }
     ],
 
@@ -71,6 +77,24 @@ Page({
         "iconUrl": '../../images/ywc.png',
         "iconText": '已完成',
         "id": 41
+      }
+    ],
+
+    tradeArrayEx: [
+      {
+        "iconUrl": '../../images/qbdd.png',
+        "iconText": '全部订单',
+        "id": 30
+      },
+      {
+        "iconUrl": '../../images/dfk.png',
+        "iconText": '待处理',
+        "id": 32
+      },
+      {
+        "iconUrl": '../../images/ywc.png',
+        "iconText": '已完成',
+        "id": 33
       }
     ]
   },
@@ -170,18 +194,14 @@ Page({
         url: '../royalty/royalty'
       })
     } else if (index == 4) {
-      this.listNew(5)
-    }else if (index == 5) {
-      wx.showModal({
-        content: '在路上,敬请期待',
-        showCancel:false,
-        success: function (res) {
-          if (res.confirm) {
-          } else if (res.cancel) {
-          }
-        }
-      })
-    } else if (index == 10) {
+      this.listNew(6)
+    }else if (index == 30) {
+      this.listNew(7)
+    }else if (index == 32) {
+      this.listNew(8)
+    }else if (index == 33) {
+      this.listNew(9)
+    }else if (index == 10) {
       this.listNew(0)
     } else if (index == 11) {
       this.listNew(1)
@@ -321,7 +341,8 @@ Page({
     wx.request({
       url: 'https://www.hattonstar.com/IsShareForZhaobo',
       data: {
-        wx_id: app.globalData.wx_id
+        wx_id: app.globalData.wx_id,
+        shop_id: app.globalData.shop_id
       },
       method: 'POST',
       success: function (res) {
@@ -334,7 +355,18 @@ Page({
             {
               item.hide = false
               iconArray[index] = item
-              that.setData({ iconArray: iconArray})
+              that.setData({ iconArray: iconArray,person_flag:true,manger_flag:false})
+            }
+         }
+        }else if (res.data == 2){
+          var iconArray = that.data.iconArray;
+          for (var index in iconArray) {
+            var item = iconArray[index];
+            if (item.id == 3)
+            {
+              item.hide = false
+              iconArray[index] = item
+              that.setData({ iconArray: iconArray,person_flag:false,manger_flag:true})
             }
          }
         }else
@@ -346,7 +378,7 @@ Page({
             {
               item.hide = true
               iconArray[index] = item
-              that.setData({ iconArray: iconArray})
+              that.setData({ iconArray: iconArray,person_flag:true,manger_flag:false})
             }
          }
         }

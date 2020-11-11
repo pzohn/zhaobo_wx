@@ -88,8 +88,9 @@ Page({
       content:'默认物流发货，如需其他方式发货，自行承担',
       success: function (res) {
         if (res.confirm) {
-          this.setData({down_flag:false});
-          this.doDeal();
+          console.log(109)
+          that.setData({down_flag:false});
+          that.doDeal();
         }
       }
     });
@@ -131,7 +132,6 @@ Page({
       this.authorize();
       return;
     }
-
     var page = this;
     wx.login({
       success: res => {
