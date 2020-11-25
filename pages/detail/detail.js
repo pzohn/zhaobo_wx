@@ -41,7 +41,7 @@ Page({
     gg_id: '默认规格',//规格ID
     // guigeList: [{ guige: '100', price: '150' }, { guige: '200', price: '150' }, { guige: '300', price: '150' }],
     guigeList: [{ guige: '默认规格', price: '0' }],
-    num: 1,//初始数量
+    num: 10,//初始数量
     buy_flag:false,
     name: '',
     phone: ''
@@ -279,6 +279,18 @@ Page({
   },
 
   buttonOk() {
+    if (this.data.num < 10){
+      wx.showModal({
+        title: '下单数量错误',
+        content: '下单数量不能低于最小限制!',
+        showCancel:false,
+        success: function (res) {
+          if (res.confirm) {
+          }
+        }
+      })
+      return
+    }
     if (this.data.num > this.data.stock){
       wx.showModal({
         title: '库存不足',
