@@ -38,7 +38,7 @@
 .btn{
   right: 10rpx;
   width: 24%;
-  background:url('https://www.gfcamps.cn/sun/goumai.png') no-repeat center center;
+  background:url('https://www.hattonstar.com/sun/goumai.png') no-repeat center center;
   background-size: cover;
   height: 28px;
   border-radius: 25rpx;
@@ -50,7 +50,7 @@
 .btn_gonggao{
   right: 10rpx;
   width: 24%;
-  background:url('https://www.gfcamps.cn/sun/xq.png') no-repeat center center;
+  background:url('https://www.hattonstar.com/sun/xq.png') no-repeat center center;
   background-size: cover;
   height: 28px;
   border-radius: 25rpx;
