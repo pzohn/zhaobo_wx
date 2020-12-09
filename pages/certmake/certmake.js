@@ -102,7 +102,7 @@ Page({
     wx.showModal({
       title: '温馨提示',
       icon: 'success',
-      content:'默认物流发货，如需其他方式发货，自行承担',
+      content:'默认百世快递发货，如需其他方式发货，自行承担',
       success: function (res) {
         if (res.confirm) {
           that.setData({down_flag:true});

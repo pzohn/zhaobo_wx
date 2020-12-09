@@ -41,10 +41,12 @@ Page({
     gg_id: '默认规格',//规格ID
     // guigeList: [{ guige: '100', price: '150' }, { guige: '200', price: '150' }, { guige: '300', price: '150' }],
     guigeList: [{ guige: '默认规格', price: '0' }],
-    num: 10,//初始数量
+    num: 1,//初始数量
+    limit_num:1,
     buy_flag:false,
     name: '',
-    phone: ''
+    phone: '',
+    remarks: ''
   },
 
   onLoad: function (options) {
@@ -98,7 +100,10 @@ Page({
           classInfo: classInfo,
           price: res.data.data.shopping.price,
           gg_image: 'https://www.hattonstar.com/storage/' + res.data.data.shopping.title[0],
-          stock: res.data.data.shopping.stock
+          stock: res.data.data.shopping.stock,
+          num:res.data.data.shopping.init_num,
+          limit_num:res.data.data.shopping.init_num,
+          remarks:res.data.data.shopping.remarks
         });
         if (res.data.data.shopping.video.length){
           page.setData({
@@ -279,7 +284,7 @@ Page({
   },
 
   buttonOk() {
-    if (this.data.num < 10){
+    if (this.data.num < this.data.limit_num){
       wx.showModal({
         title: '下单数量错误',
         content: '下单数量不能低于最小限制!',
@@ -465,9 +470,11 @@ Page({
   },
 
   showDialogBtn: function () {
-    this.setData({
-      showModal: true
-    })
+    if (this.data.remarks != ''){
+      this.setData({
+        showModal: true
+      })
+    }
   },
 
   preventTouchMove: function () {

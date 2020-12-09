@@ -1,0 +1,123 @@
+<!-- 下拉菜单   -->
+<view id="swiper-tab">
+    <view class="swiper-tab">
+      <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="tabNav">{{first}}
+        <i></i>
+      </view>
+      <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="tabNav">{{second}}
+        <i></i>
+      </view>
+      <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="tabNav">{{thirds}}
+        <i></i>
+      </view>
+    </view>
+    <swiper current="{{currentTab}}" duration="1000" class="swiper-item" style='display:{{displays}}'>
+      <swiper-item>
+        <view class="location_bottom" hidden="">
+          <view wx:for="{{FirstShare}}">
+            <view class="add_city" data-item-index="{{index}}"  data-num="{{item.id}}" bindtap="clickFirst" data-name="{{item.name}}">{{item.name}}</view>
+          </view>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view class="location_bottom" hidden="">
+          <view wx:for="{{SecondShare}}">
+            <view class="add_city" data-item-index="{{index}}"  data-num="{{item.id}}" bindtap="clickSecond" data-name="{{item.name}}">{{item.name}}</view>
+          </view>          
+        </view>
+      </swiper-item>
+      <swiper-item class="shaixuankuang">
+        <view class="zidingyi">
+          <picker mode="date" value="{{dateBefore}}" start="2020-11-01" end="2030-11-01" bindchange="bindDateChange1">
+            <view class="picker">
+              起始日期: {{dateBefore}}
+            </view>
+          </picker>
+        </view>
+        <view class="zidingyi">
+          <picker mode="date" value="{{dateAfter}}" start="2020-11-01" end="2030-11-01" bindchange="bindDateChange2">
+            <view class="picker">
+              截止日期: {{dateAfter}}
+            </view>
+          </picker>
+        </view>
+        <view class="qingkong">
+          <p class="queren" bindtap="queren">确认</p>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class="swiper-beijing" bindtap="hideNav" style='display:{{displays}}'></view>
+
+
+  <view class= "header">
+  <view class="header_content">
+    <text class="header_title">分销总量</text>
+    <text class="header_item">{{myroyalty}}</text>
+  </view>
+</view>
+
+<view class="swiper-tab1">
+    <view class="swiper-tab1-item {{currentTab1==0?'active':''}}" data-current="0" bindtap="clickTab">分销记录</view>
+    <view class="swiper-tab1-item {{currentTab1==1?'active':''}}" data-current="1" bindtap="clickTab" hidden="{{!one_flag}}">二级代理</view>
+</view>
+
+<view class = "{{currentTab1 == 0 ? 'show':'hidden'}}" style='margin-bottom:50px;'>
+  <view class="order-shop-list">
+    <view wx:for="{{orderShopList}}">
+      <view class="orderShopList" data-item-index="{{index}}">
+        <view class="first-line">
+          <text>{{item.BillDate}}</text>
+          <text class="text-money">数量： {{item.royalty}}</text>
+        </view>
+        <view hidden="{{!manage_flag}}">
+          <text class="text-left">分销商</text>
+          <text>{{item.share}}</text>
+        </view>
+        <view>
+          <text class="text-left">商品名称</text>
+          <text>{{item.BillNo}}</text>
+        </view>
+        <view>
+          <text class="text-left">购买地址</text>
+          <text>{{item.address}}</text>
+        </view>
+        <view>
+          <text class="text-left">购买人</text>
+          <text>{{item.EmpFullName}}</text>
+          <text class="text-money">¥ {{item.TotalTaxAmount}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class = "{{currentTab == 1 ? 'show':'hidden'}}" style='margin-bottom:50px;'>
+  <view class="order-shop-list">
+    <view wx:for="{{tradeShopList}}">
+      <view class="orderShopList" data-item-index="{{index}}">
+        <view class="first-line">
+          <text>{{item.BillDate}}</text>
+          <text class="text-money">数量： {{item.royalty}}</text>
+        </view>
+        <view>
+          <text class="text-left">分销商</text>
+          <text>{{item.share}}</text>
+        </view>
+        <view>
+          <text class="text-left">商品名称</text>
+          <text>{{item.BillNo}}</text>
+        </view>
+        <view>
+          <text class="text-left">购买地址</text>
+          <text>{{item.address}}</text>
+        </view>
+        <view>
+          <text class="text-left">购买人</text>
+          <text>{{item.EmpFullName}}</text>
+          <text class="text-money">¥ {{item.TotalTaxAmount}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

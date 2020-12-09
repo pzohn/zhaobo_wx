@@ -17,6 +17,7 @@
     "pages/editaddress/editaddress",
     "pages/cart/cart",
     "pages/royalty/royalty",
+    "pages/royaltydetail/royaltydetail",
     "pages/listdetail/listdetail",
     "pages/leasing/leasing"
   ],

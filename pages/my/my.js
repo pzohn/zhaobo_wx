@@ -27,7 +27,7 @@ Page({
       },
       {
         "iconUrl": '../../images/jifen.png',
-        "iconText": '我的分销',
+        "iconText": '当月分销',
         "id": 3,
         "hide":true
       }
@@ -41,7 +41,7 @@ Page({
       // ,
       // {
       //   "iconUrl": 'https://www.hattonstar.com/gfcamp/card.png',
-      //   "iconText": '交易处理',
+      //   "iconText": '分销详情',
       //   "id": 5,
       //   "hide":false
       // }
@@ -192,6 +192,10 @@ Page({
     } else if (index == 3) {
       wx.navigateTo({
         url: '../royalty/royalty'
+      })
+    } else if (index == 5) {
+      wx.navigateTo({
+        url: '../royaltydetail/royaltydetail'
       })
     } else if (index == 4) {
       this.listNew(6)
@@ -352,37 +356,39 @@ Page({
           var iconArray = that.data.iconArray;
           for (var index in iconArray) {
             var item = iconArray[index];
-            if (item.id == 3)
+            if (item.id == 3 || item.id == 5)
             {
               item.hide = false
               iconArray[index] = item
-              that.setData({ iconArray: iconArray,person_flag:true,manger_flag:false})
             }
          }
+         that.setData({ iconArray: iconArray,person_flag:true,manger_flag:false})
         }else if (res.data == 2){
           var iconArray = that.data.iconArray;
           for (var index in iconArray) {
             var item = iconArray[index];
+            // if (item.id == 3 || item.id == 5)
             if (item.id == 3)
             {
               item.hide = false
               iconArray[index] = item
-              that.setData({ iconArray: iconArray,person_flag:false,manger_flag:true})
             }
-            app.globalData.manger_flag = true
          }
+         app.globalData.manger_flag = true
+         that.setData({ iconArray: iconArray,person_flag:false,manger_flag:true})
         }else
         {
           var iconArray = that.data.iconArray;
           for (var index in iconArray) {
             var item = iconArray[index];
+            // if (item.id == 3 || item.id == 5)
             if (item.id == 3)
             {
               item.hide = true
               iconArray[index] = item
-              that.setData({ iconArray: iconArray,person_flag:true,manger_flag:false})
             }
          }
+         that.setData({ iconArray: iconArray,person_flag:true,manger_flag:false})
         }
       },
       fail: function (res) {
