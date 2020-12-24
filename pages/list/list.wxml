@@ -21,6 +21,9 @@
     <view class='title'>
         <text>订单编号：{{item.out_trade_no}}</text>
     </view>
+    <view class='title_express' hidden="{{!expressFlag || !item.expressFlag}}">
+        <text>快递单号：{{item.express}}</text>
+    </view>
     <!-- <view class='title'>
         <text>代金券抵扣：￥{{item.royalty_charge}}</text>
     </view> -->

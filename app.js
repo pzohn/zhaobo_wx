@@ -163,6 +163,8 @@ App({
     leasing_id: 0,
     notice_flag:0,
     share_user_flag:0,
-    manger_flag:false
+    manger_flag:false,
+    express_flag:true,
+    expresser_flag:false
   }
 })

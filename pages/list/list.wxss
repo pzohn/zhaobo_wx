@@ -30,6 +30,20 @@
   width: 100%;
 }
 
+.title_express{
+  display: flex;
+  flex-direction: row;
+  padding-top: 10px;
+}
+
+.title_express text{
+  left: 10rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: purple;
+  width: 100%;
+}
+
 .dingdan{
   display: flex;
   flex-direction: row;
@@ -46,7 +60,7 @@
 .btn{
   right: 10rpx;
   width: 24%;
-  background:url('https://www.gfcamps.cn/sun/jxzf.png') no-repeat center center;
+  background:url('https://www.hattonstar.com/sun/jxzf.png') no-repeat center center;
   background-size: cover;
   height: 28px;
   border-radius: 25rpx;
@@ -58,7 +72,7 @@
 .btn1{
   right: 10rpx;
   width: 24%;
-  background:url('https://www.gfcamps.cn/sun/gbdd.png') no-repeat center center;
+  background:url('https://www.hattonstar.com/sun/gbdd.png') no-repeat center center;
   background-size: cover;
   height: 28px;
   border-radius: 25rpx;
@@ -70,7 +84,7 @@
 .btn2{
   right: 10rpx;
   width: 24%;
-  background:url('https://www.gfcamps.cn/sun/gbtk.png') no-repeat center center;
+  background:url('https://www.hattonstar.com/sun/gbtk.png') no-repeat center center;
   background-size: cover;
   height: 28px;
   border-radius: 25rpx;

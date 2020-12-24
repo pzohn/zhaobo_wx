@@ -12,7 +12,8 @@ Page({
     royalty:0,
     integral:0,
     person_flag:true,
-    manger_flag:false,
+    manger_flag:true,
+    expresser_flag:true,
     iconArray: [
       // {
       //   "iconUrl": 'https://www.hattonstar.com/gfcamp/info.png',
@@ -38,13 +39,13 @@ Page({
       //   "id": 4,
       //   "hide":false
       // }
-      // ,
-      // {
-      //   "iconUrl": 'https://www.hattonstar.com/gfcamp/card.png',
-      //   "iconText": '分销详情',
-      //   "id": 5,
-      //   "hide":false
-      // }
+      ,
+      {
+        "iconUrl": 'https://www.hattonstar.com/gfcamp/card.png',
+        "iconText": '分销详情',
+        "id": 5,
+        "hide":true
+      }
     ],
 
     tradeArray: [
@@ -352,44 +353,79 @@ Page({
       method: 'POST',
       success: function (res) {
         console.log(res)
-        if (res.data == 1){
-          var iconArray = that.data.iconArray;
-          for (var index in iconArray) {
-            var item = iconArray[index];
+        var iconArray = that.data.iconArray;
+        for (var index in iconArray) {
+          var item = iconArray[index];
+          if (res.data > 0 && res.data != 3){
             if (item.id == 3 || item.id == 5)
             {
               item.hide = false
               iconArray[index] = item
             }
-         }
-         that.setData({ iconArray: iconArray,person_flag:true,manger_flag:false})
-        }else if (res.data == 2){
-          var iconArray = that.data.iconArray;
-          for (var index in iconArray) {
-            var item = iconArray[index];
-            // if (item.id == 3 || item.id == 5)
-            if (item.id == 3)
-            {
-              item.hide = false
-              iconArray[index] = item
-            }
-         }
-         app.globalData.manger_flag = true
-         that.setData({ iconArray: iconArray,person_flag:false,manger_flag:true})
-        }else
-        {
-          var iconArray = that.data.iconArray;
-          for (var index in iconArray) {
-            var item = iconArray[index];
-            // if (item.id == 3 || item.id == 5)
-            if (item.id == 3)
+          }else{
+            if (item.id == 3 || item.id == 5)
             {
               item.hide = true
               iconArray[index] = item
             }
-         }
-         that.setData({ iconArray: iconArray,person_flag:true,manger_flag:false})
+          }
+       }
+       if ((res.data == 0 || res.data == 1)){
+        that.setData({person_flag:false,
+          manger_flag: true,
+          expresser_flag: true})
+      }
+        if ((res.data == 2)){
+          app.globalData.manger_flag = true
+          that.setData({ manger_flag: false,
+            person_flag: true,
+            expresser_flag: true})
         }
+
+        if ((res.data == 3)){
+          app.globalData.expresser_flag = true
+          that.setData({ expresser_flag: false,
+            person_flag: true,
+            manger_flag: true})
+        }
+        that.setData({ iconArray: iconArray})
+
+        //   var iconArray = that.data.iconArray;
+        //   for (var index in iconArray) {
+        //     var item = iconArray[index];
+        //     if (item.id == 3 || item.id == 5)
+        //     {
+        //       item.hide = false
+        //       iconArray[index] = item
+        //     }
+        //  }
+        //  that.setData({ iconArray: iconArray,person_flag:true,manger_flag:false})
+        // }else if (res.data == 2){
+        //   var iconArray = that.data.iconArray;
+        //   for (var index in iconArray) {
+        //     var item = iconArray[index];
+        //      if (item.id == 3 || item.id == 5)
+        //     if (item.id == 3)
+        //     {
+        //       item.hide = false
+        //       iconArray[index] = item
+        //     }
+        //  }
+        //  app.globalData.manger_flag = true
+        //  that.setData({ iconArray: iconArray,person_flag:false,manger_flag:true})
+        // }else{
+        //   var iconArray = that.data.iconArray;
+        //   for (var index in iconArray) {
+        //     var item = iconArray[index];
+        //      if (item.id == 3 || item.id == 5)
+        //     if (item.id == 3)
+        //     {
+        //       item.hide = true
+        //       iconArray[index] = item
+        //     }
+        //  }
+        //  that.setData({ iconArray: iconArray,person_flag:true,manger_flag:false})
+        // }
       },
       fail: function (res) {
       }

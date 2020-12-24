@@ -92,7 +92,7 @@
   </view>
 </view>
 
-<view class = "{{currentTab == 1 ? 'show':'hidden'}}" style='margin-bottom:50px;'>
+<view class = "{{currentTab1 == 1 ? 'show':'hidden'}}" style='margin-bottom:50px;'>
   <view class="order-shop-list">
     <view wx:for="{{tradeShopList}}">
       <view class="orderShopList" data-item-index="{{index}}">

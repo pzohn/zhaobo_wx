@@ -19,7 +19,8 @@
     "pages/royalty/royalty",
     "pages/royaltydetail/royaltydetail",
     "pages/listdetail/listdetail",
-    "pages/leasing/leasing"
+    "pages/leasing/leasing",
+    "pages/express/express"
   ],
   "window": {
     "backgroundTextStyle": "light",

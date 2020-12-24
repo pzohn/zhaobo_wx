@@ -1,5 +1,5 @@
 var util=require('../../utils/util.js')
-
+var app = getApp();
 Page({
   data: {
     // 下拉菜单
@@ -16,7 +16,11 @@ Page({
     dateAfter: '',
     currentTab1: 0,
     myroyalty:0,
-    orderShopList: []
+    orderShopList: [],
+    tradeShopList: [],
+    currentTab1: 0,
+    second_flag:false,
+    first_flag:false
   },
   isShow: true,
   currentTab: 0,
@@ -57,13 +61,23 @@ Page({
     if (index > 0){
       Second = this.data.FirstShare[index].Second;
     }else if (index == 0){
-      var header = new Object();
-      header.name = "全部";
-      header.id = 0;
-      Second[0] = header;
-      this.setData({
-        SecondShare_id: 0
-      })
+      if (this.data.second_flag == true || this.data.first_flag == true){
+        Second = this.data.FirstShare[index].Second;
+        if (this.data.second_flag == true){
+          this.setData({
+            SecondShare_id: Second[0].id
+          })
+        }
+      }else{
+        var header = new Object();
+        header.name = "全部";
+        header.id = 0;
+        Second[0] = header;
+        this.setData({
+          SecondShare_id: 0
+        })
+      }
+
     }
     this.setData({
       SecondShare: Second,
@@ -90,6 +104,10 @@ Page({
   },
 
   initShare: function () {
+    var wx_id = 0;
+    if (app.globalData.manger_flag == false){
+      wx_id = app.globalData.wx_id;
+    }
     var date = util.formatDate(new Date());
     this.setData({
       dateAfter: date,
@@ -100,10 +118,12 @@ Page({
     wx.request({
       url: 'https://www.hattonstar.com/getAreasFirst',
       data: {
+        wx_id:wx_id
       },
       method: 'POST',
       success: function (res) {
         var FirstShare = [];
+        var second_flag = res.data.second_flag;
         for (var i in res.data.data) {
           var first = new Object();
           first.name = res.data.data[i].name;
@@ -119,14 +139,25 @@ Page({
             second.id = res.data.data[i].Second[j].id;
             Second[j] = second;
           }
-          Second.splice(0,0,header);
+          if (second_flag == false){
+            Second.splice(0,0,header);
+          }
           first.Second = Second;
           FirstShare[i] = first;
         }
-        FirstShare.splice(0,0,header);
+        if (second_flag == false && app.globalData.manger_flag == true){
+          FirstShare.splice(0,0,header);
+        }
+        if (second_flag == false && app.globalData.manger_flag == false){
+          page.setData({
+            first_flag:true
+          });
+        }
         page.setData({
-          FirstShare:FirstShare
+          FirstShare:FirstShare,
+          second_flag:second_flag
         });
+        console.log(page.data.FirstShare)
       },
       fail: function (res) {
       }
@@ -176,7 +207,7 @@ Page({
     }else if (first_id != 0 && second_id == 0){
       page.First(first_id,page.data.dateBefore,page.data.dateAfter)
     }else if (second_id != 0){
-      page.First(second_id,page.data.dateBefore,page.data.dateAfter)
+      page.Second(second_id,page.data.dateBefore,page.data.dateAfter)
     }
 
     this.setData({
@@ -185,8 +216,6 @@ Page({
   },
 
   All: function (begin,after)  {
-    console.log(begin)
-    console.log(after)
     var page = this;
     wx.request({
       url: 'https://www.hattonstar.com/getShareForZhaoboEx',
@@ -197,7 +226,6 @@ Page({
       },
       method: 'POST',
       success: function (res) {
-        console.log(res.data)
         var orderShopList = [];
         for (var i in res.data.tradesTwo) {
           var object = new Object();
@@ -212,12 +240,24 @@ Page({
         }
         page.setData({
           orderShopList: orderShopList,
-          myroyalty: res.data.count
+          myroyalty: res.data.count,
+          one_flag:false
         });
       },
       fail: function (res) {
       }
     })
+  },
+
+  clickTab: function (e) {
+    var that = this;
+    if (this.data.currentTab1 === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({
+        currentTab1: e.target.dataset.current,
+      })
+    }
   },
 
   First: function (id,begin,after)  {
@@ -233,6 +273,7 @@ Page({
       method: 'POST',
       success: function (res) {
         var orderShopList = [];
+        var tradeShopList = [];
         for (var i in res.data.tradesOne) {
           var object = new Object();
           object.BillDate = res.data.tradesOne[i].time;
@@ -244,9 +285,22 @@ Page({
           object.share = res.data.tradesOne[i].share_name;
           orderShopList[i] = object;
         }
+        for (var i in res.data.tradesTwo) {
+          var object = new Object();
+          object.BillDate = res.data.tradesTwo[i].time;
+          object.BillNo = res.data.tradesTwo[i].body;
+          object.EmpFullName = res.data.tradesTwo[i].trade_name;
+          object.TotalTaxAmount = res.data.tradesTwo[i].charge;
+          object.royalty = res.data.tradesTwo[i].num;
+          object.address = res.data.tradesTwo[i].trade_addr;
+          object.share = res.data.tradesTwo[i].share_name;
+          tradeShopList[i] = object;
+        }
         page.setData({
           orderShopList: orderShopList,
-          myroyalty: res.data.count
+          tradeShopList: tradeShopList,
+          myroyalty: res.data.count,
+          one_flag:(res.data.one_flag == 1)
         });
       },
       fail: function (res) {
@@ -280,7 +334,8 @@ Page({
         }
         page.setData({
           orderShopList: orderShopList,
-          myroyalty: res.data.count
+          myroyalty: res.data.count,
+          one_flag:false
         });
       },
       fail: function (res) {

@@ -17,6 +17,14 @@
     </view>
     <view><text class="iconfont icon-arrowright"></text></view>
 </view>
+
+<view class="Receiving_express" hidden="{{!expressFlag}}">
+    <view class="express">
+        <text class="iconfont arrowright_express">快递单号</text>
+        <text class="iconfont arrowright_express">{{express}}</text>
+    </view>
+    <!-- <view><text class="iconfont icon-arrowright express_btn">></text></view> -->
+</view>
  
 <view class='goods'>
   <view class="goods_msg" wx:for="{{goods_info}}" wx:key="{{index}}">
@@ -59,6 +67,8 @@
 </view>
 
 <view class="order_pay" hidden="{{btn_hide_ex}}">
-    <view class="close_order_ex" bindtap="bindCloseOrder_ex">关闭订单</view>
-    <view class="submit_order_ex" bindtap="bindSubmitOrder_ex">完成订单</view>
+    <view class="close_order_ex" bindtap="bindCloseOrder_ex" hidden="{{btn_close_hide_ex}}">关闭订单</view>
+    <view class="express_order_ex" bindtap="bindExpressOrder_ex" hidden="{{!expressFlag}}">查看物流</view>
+    <!-- <view class="express_order_ex" bindtap="bindExpressWrOrder_ex" hidden="{{btn_express_wr_hide}}">填写物流</view> -->
+    <view class="submit_order_ex" bindtap="bindSubmitOrder_ex" hidden="{{btn_close_hide}}">完成订单</view>
 </view>

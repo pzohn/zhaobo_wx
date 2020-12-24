@@ -3,7 +3,8 @@ Page({
   data: {
     activity: [],
     page_id:0,
-    itemOnFlag:true
+    itemOnFlag:true,
+    expressFlag:false
   },
 
   /**
@@ -12,6 +13,7 @@ Page({
   onLoad: function (options) {
     var page = this;
     var id = options.type;
+    page.setData({ expressFlag: app.globalData.express_flag});
     page.initData(id);
   },
 
@@ -48,6 +50,7 @@ Page({
       method: 'POST',
       success: function (res) {
         var activity = [];
+        var indexEx = 0;
         for (var index in res.data.data) {
           var object = new Object();
           object.count = res.data.data[index].count;
@@ -78,6 +81,7 @@ Page({
           object.address = res.data.data[index].address;
           object.total_charge = res.data.data[index].charge;
           object.royalty_charge = res.data.data[index].use_royalty;
+          object.expressFlag = false;
           if (object.status == '待付款'){
             object.payhide = false;
             object.deletehide = false;
@@ -88,7 +92,7 @@ Page({
             object.payhide = true;
             object.deletehide = true;
             object.refundhide = true;
-            object.status = '线下待付款'
+            object.status = '线下交易待确认'
           }else {
             object.refund = true;
             object.payhide = true;
@@ -98,8 +102,24 @@ Page({
           if (object.status == '待处理'){
             object.refundhide = false;
           }
-          object.index = index;
-          activity[index] = object;
+          if (object.status == '已完成') {
+            object.express = res.data.data[index].express;
+            object.expressFlag = true;
+            if (object.express == ''){
+              object.expressFlag = false;
+            }
+          }
+          if (app.globalData.expresser_flag == true){
+            if (object.status != '线下交易待确认'){
+              object.index = indexEx;
+              activity[indexEx] = object;
+              indexEx ++;
+            }
+          }else{
+            object.index = indexEx;
+            activity[indexEx] = object;
+            indexEx ++;
+          }
         }
         page.setData({
           activity: activity,
@@ -195,7 +215,8 @@ Page({
           wx.request({
             url: 'https://www.hattonstar.com/hideOrder',
             data: {
-              id: id
+              id: id,
+              wx_id:app.globalData.wx_id
             },
             method: 'POST',
             success: function (res) {

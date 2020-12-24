@@ -13,6 +13,27 @@ page {
     border-radius: 10rpx;
     padding: 30rpx;
 }
+
+.Receiving_express {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20rpx;
+    height: 100rpx;
+    background: white;
+    border-radius: 10rpx;
+    padding: 30rpx;
+}
+
+.express {
+    display: flex;
+    flex-direction: column;
+}
+
+.express_btn {
+    color: #7e7e7e;
+}
+
 .icon-arrowright {
   font-size: 60rpx;
 }
@@ -144,7 +165,7 @@ page {
 
 
 .submit_order_ex {
-    width: 40%;
+    width: 30%;
     background: #ad0e12;
     color: white;
     font-size: 32rpx;
@@ -152,8 +173,16 @@ page {
 }
 
 .close_order_ex {
-    width: 40%;
+    width: 30%;
     background: #49bd13;
+    color: white;
+    font-size: 32rpx;
+    text-align: center;
+}
+
+.express_order_ex {
+    width: 30%;
+    background: orange;
     color: white;
     font-size: 32rpx;
     text-align: center;
