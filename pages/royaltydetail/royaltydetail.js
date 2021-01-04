@@ -157,6 +157,19 @@ Page({
           FirstShare:FirstShare,
           second_flag:second_flag
         });
+        if (app.globalData.manger_flag == false){
+          if (page.data.FirstShare.length > 0){
+            page.setData({
+              FirstShare_id: page.data.FirstShare[0].id
+            });
+            if (page.data.second_flag == true){
+              page.setData({
+                SecondShare_id: page.data.FirstShare[0].Second[0].id
+              });
+            }
+          }
+
+        }
         console.log(page.data.FirstShare)
       },
       fail: function (res) {

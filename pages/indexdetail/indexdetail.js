@@ -10,6 +10,7 @@ Page({
   },
 
   onShow: function () {
+    this.initUserForShare();
     var id = 0;
     this.initData(id);
     if (id == 18) {
@@ -31,6 +32,7 @@ Page({
       var strId = arr[1];
       app.globalData.share_id = strId;
       wx.setStorageSync('share_id', strId);
+      this.initUserForShare();
     }else{
       var share_id = wx.getStorageSync('share_id');    
       if (share_id != undefined){
@@ -102,7 +104,6 @@ Page({
           for (var index in res.data.data.shoppings) {
             var object = new Object();
             object.img = 'https://www.hattonstar.com/storage/' + res.data.data.shoppings[index].url;
-            console.log(object.img)
             object.name = res.data.data.shoppings[index].name;
             object.id = res.data.data.shoppings[index].id;
             activity[index] = object;
@@ -124,6 +125,36 @@ Page({
         })
       }
     })
+  },
+
+  initUserForShare: function () {
+    var share_id = wx.getStorageSync('share_id');
+    var that = this;
+    if (share_id != undefined){ 
+      if (share_id != ""){
+        app.globalData.share_id = share_id
+        wx.request({
+          url: 'https://www.hattonstar.com/GetShareForUser',
+          data: {
+            share_id: share_id
+          },
+          method: 'POST',
+          success: function (res) {
+            if (res.data == 0){
+              app.globalData.normal_user_flag = true
+              app.globalData.share_id = 0
+              wx.setStorageSync('share_id', 0);
+            }else if(res.data == 1){
+              app.globalData.normal_user_flag = false
+              app.globalData.share_id = share_id
+              wx.setStorageSync('share_id', share_id);
+            }
+          },
+          fail: function (res) {
+          }
+        })
+      }
+    }
   },
 
   typeHandler: function (e) {

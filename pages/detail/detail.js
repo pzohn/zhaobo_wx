@@ -94,11 +94,15 @@ Page({
           object = 'https://www.hattonstar.com/storage/' + res.data.data.shopping.detail[j];
           classInfo[j] = object;
         }
+        var price = res.data.data.shopping.price;
+        if (app.globalData.normal_user_flag == true){
+          price = res.data.data.shopping.vip_price;
+        }
         page.setData({
           title: res.data.data.shopping.name,
           imgUrls: imgUrls,
           classInfo: classInfo,
-          price: res.data.data.shopping.price,
+          price: price,
           gg_image: 'https://www.hattonstar.com/storage/' + res.data.data.shopping.title[0],
           stock: res.data.data.shopping.stock,
           num:res.data.data.shopping.init_num,

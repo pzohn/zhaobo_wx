@@ -85,7 +85,7 @@ Page({
     wx.showModal({
       title: '温馨提示',
       icon: 'success',
-      content:'默认物流发货，如需其他方式发货，自行承担',
+      content:'默认百世快递发货，如需其他方式发货，自行承担',
       success: function (res) {
         if (res.confirm) {
           console.log(109)
@@ -147,6 +147,10 @@ Page({
         // console.log(page.data.all_total_price)
         // console.log( app.globalData.shop_id)
         // return
+        var vip_flag = 0;
+        if (app.globalData.normal_user_flag == true){
+          vip_flag = 1;
+        }
         if (code) {
           wx.request({
             url: 'https://www.hattonstar.com/onPayShopping',
@@ -160,7 +164,8 @@ Page({
               share_id: app.globalData.share_id,
               use_royalty: page.data.royalty_price,
               total_fee:page.data.all_total_price,
-              shop_id: app.globalData.shop_id
+              shop_id: app.globalData.shop_id,
+              vip_flag:vip_flag
             },
             method: 'POST',
             success: function (res) {
@@ -207,6 +212,11 @@ Page({
       return;
     }
 
+    var vip_flag = 0;
+    if (app.globalData.normal_user_flag == true){
+      vip_flag = 1;
+    }
+
     var page = this;
     wx.login({
       success: res => {
@@ -224,7 +234,8 @@ Page({
               share_id: app.globalData.share_id,
               use_royalty: page.data.royalty_price,
               total_fee:page.data.all_total_price,
-              shop_id: app.globalData.shop_id
+              shop_id: app.globalData.shop_id,
+              vip_flag:vip_flag
             },
             method: 'POST',
             success: function (res) {
@@ -436,6 +447,9 @@ Page({
         var object = new Object();
         object.title = res.data.name
         object.price = res.data.charge;
+        if (app.globalData.normal_user_flag == true){
+          object.price = res.data.vip_price;
+        }
         object.image = 'https://www.hattonstar.com/storage/' + res.data.title_pic;
         object.count = page.data.goods_count;
         goods_info[0] = object;

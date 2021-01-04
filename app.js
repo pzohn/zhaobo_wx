@@ -165,6 +165,7 @@ App({
     share_user_flag:0,
     manger_flag:false,
     express_flag:true,
-    expresser_flag:false
+    expresser_flag:false,
+    normal_user_flag:true
   }
 })
