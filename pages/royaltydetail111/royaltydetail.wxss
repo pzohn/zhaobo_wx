@@ -2,6 +2,11 @@
  
 /* 下面是tobar */
  
+#swiper-tab {
+  width: 100%;
+  position: relative;
+}
+ 
 .swiper-tab {
   width: 100%;
   text-align: center;
@@ -12,7 +17,7 @@
 .swiper-tab-list {
   font-size: 30rpx;
   display: inline-block;
-  width: 30%;
+  width: 25%;
   color: #666;
   border-bottom: 0rpx;
   position: relative;
@@ -58,13 +63,14 @@
 .swiper-item {
   background: #fff;
   width: 100%;
-  height: 2000rpx;
+  height: 600rpx;
   display: none;
   position: absolute;
   top: 100rpx;
   z-index: 333333;
   left: 0;
   animation: displays 1s;
+  overflow-y: auto;
 }
  
 @keyframes displays {
@@ -93,7 +99,7 @@
  
 /* 下拉切换中的切换 */
  
-/* .nav {
+.nav {
   width: 20%;
   height: 100rpx;
   float: left;
@@ -130,7 +136,17 @@
   display: none;
   text-align: center;
   line-height: 200px;
-} */
+}
+ 
+#rights {
+  width: 79%;
+  float: right;
+  border-left: solid 1px #eee;
+  font-size: 15px;
+  max-height: 600rpx;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
  
 /*添加class改变样式  */
  
@@ -154,14 +170,43 @@
   padding-left: 5%;
 }
  
+.add_adress {
+  height: 70rpx;
+  line-height: 70rpx;
+  border-bottom: 2rpx solid #f63;
+  color: #f63;
+}
+ 
+.add_adre {
+  height: 70rpx;
+  line-height: 70rpx;
+  border-bottom: 2rpx solid #f63;
+  color: #f63;
+}
+ 
+.add_citying {
+  padding-left: 5%;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-bottom: 2rpx solid #f63;
+  color: #f63;
+}
+ 
+.add_House {
+  padding-left: 5%;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-bottom: 2rpx solid #f63;
+  color: #f63;
+}
  
 /*// 筛选  */
  
 .shaixuankuang {
   width: 100%;
-  height: 1000rpx;
+  height: 600rpx;
   overflow: hidden;
-  max-height: 1000rpx;
+  max-height: 600rpx;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -177,13 +222,14 @@
   padding: 0 2.5% 1%;
   display: block;
   font-size: 15px;
-  /* color: #999; */
+  color: #999;
 }
  
 .chose-txt {
+  /* border-radius: 6px; */
   font-size: 26rpx;
-  width: 80%;
-  margin: 4px 10%;
+  width: 29%;
+  margin: 4px 14rpx;
   float: left;
 }
  
@@ -196,23 +242,25 @@
 }
  
 .zidingyi {
-  width: 100%;
-  height: auto;
+  width: 95%;
+  height: 50px;
+  margin: 0 auto;
   overflow: hidden;
 }
  
 .zidingyi span {
-  width: 95%;
-  padding: 0 2.5% 1%;
-  display: block;
-  font-size: 15px;
+  float: left;
+  font-size: 16px;
+  line-height: 40px;
+  color: #666;
+  margin-right: 15rpx;
 }
  
 .zidingyi input {
-  width: 80%;
+  width: 50px;
+  padding-left: 10rpx;
   float: left;
   margin-top: 10rpx;
-  margin-left: 10%;
   font-size: 15px;
   line-height: 40px;
   border: solid 1px #eee;
@@ -266,98 +314,4 @@
     line-height: 35px;
     background: rgba(229,65,65,0.95);
     border-radius: 3px;
-}
-
-
-
-/* pages/shoporder/shoporder.wxss */
-.header{
-  background: linear-gradient(to right, red , rgba(255, 0, 98));
-  margin-top: 5%;
-}
-
-.header_content{
-  display: flex;
-  flex-direction: column;
-  color:  #fff;
-  text-align: center;
-  justify-content: center;
-  padding-top:6%;
-  padding-bottom:6%;
-}
-.header_title{
-  font-size: 15px;
-}
-.header_item{
-  padding-top: 2%;
-  font-size: 30px;
-}
-.order-shop-list {
-  margin-bottom: 100rpx;
-  background: #f3f3f3;
-  padding-top: 24rpx;
-}
-
-.bottom-pay {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
-.orderShopList {
-  font-size: 32rpx;
-  padding: 16rpx 24rpx;
-  background: #fff;
-  margin-bottom: 24rpx;
-}
-
-.orderShopList > view {
-  min-height: 52rpx;
-  line-height: 52rpx;
-  color: #727272;
-}
-
-.orderShopList > view.first-line {
-  border-bottom: 1px solid #f3f3f3;
-}
-
-.text-left {
-  color: #bebebe;
-  display: inline-block;
-  width: 160rpx;
-}
-
-.text-money {
-  float: right;
-  font-size: 28rpx;
-  color: #ff4c4c;
-}
-
-
-
-.swiper-tab1{
-    width: 100%;
-    text-align: center;
-    height: 88rpx;
-    line-height: 88rpx;
-    display: flex;
-    flex-flow: row;
-    justify-content: space-evenly;
-    color: #ccc;
-    font-size: 16px;
-}
-.swiper-tab1-item{
-    width: 30%; 
-    color:#434343;
-}
-.active{
-    color:#F65959;
-    font-size: 16px;
-    font-weight: bold;
-}
-.show{
-  display: block;
-}
-.hidden{
-  display: none;
 }

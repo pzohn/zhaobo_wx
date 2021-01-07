@@ -41,6 +41,18 @@
             </view>
           </picker>
         </view>
+        <view class="shaixuan">
+          <span class="shuaixuantiaojian">商品选择:</span>
+          <block wx:for="{{shoppings}}" wx:key="key">
+            <view class="chose-txt" data-id="{{index}}" data-spid="{{item.id}}" bindtap="chaoxiang" style="{{index == two?'border:1rpx solid #e8580c; color: #e8580c':'border:1rpx solid gainsboro;color:gray'}}">
+              <text class="chose-p">{{item.name}}</text>
+            </view>
+          </block>
+        </view>
+        <view class="zidingyi">
+          <span>地区名称:</span>
+            <input class="front" bindinput="areainput" type='text'></input>
+          </view>
         <view class="qingkong">
           <p class="queren" bindtap="queren">确认</p>
         </view>

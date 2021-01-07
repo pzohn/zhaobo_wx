@@ -20,7 +20,11 @@ Page({
     tradeShopList: [],
     currentTab1: 0,
     second_flag:false,
-    first_flag:false
+    first_flag:false,
+    shoppings: [],
+    shopping_id:0,
+    two: 0,
+    area:''
   },
   isShow: true,
   currentTab: 0,
@@ -29,6 +33,15 @@ Page({
   hideNav: function () {
     this.setData({
       displays: "none"
+    })
+  },
+
+  chaoxiang: function (e) {
+    var id = e.currentTarget.dataset.id;  //获取自定义的ID值 
+    var spid = e.currentTarget.dataset.spid;  
+    this.setData({
+      two: id,
+      shopping_id:spid
     })
   },
     // 区域
@@ -118,11 +131,24 @@ Page({
     wx.request({
       url: 'https://www.hattonstar.com/getAreasFirst',
       data: {
-        wx_id:wx_id
+        wx_id: wx_id,
+        type_id: 0,
+        shop_id: app.globalData.shop_id
       },
       method: 'POST',
       success: function (res) {
         var FirstShare = [];
+        var shoppings = [];
+        for (var k in res.data.shoppings){
+          var shopping = new Object();
+          shopping.id = res.data.shoppings[k].id;
+          shopping.name = res.data.shoppings[k].name;
+          shoppings[k] = shopping;
+        }
+        var shoppingAll = new Object();
+        shoppingAll.name = "全部";
+        shoppingAll.id = 0;
+        shoppings.splice(0,0,shoppingAll);
         var second_flag = res.data.second_flag;
         for (var i in res.data.data) {
           var first = new Object();
@@ -155,7 +181,8 @@ Page({
         }
         page.setData({
           FirstShare:FirstShare,
-          second_flag:second_flag
+          second_flag:second_flag,
+          shoppings:shoppings
         });
         if (app.globalData.manger_flag == false){
           if (page.data.FirstShare.length > 0){
@@ -228,6 +255,15 @@ Page({
     })
   },
 
+  areainput(e) {
+    let area = e.detail.value;
+    console.log(area)
+    area = area.replace(/\s+/g,"");
+    this.setData({
+      area: area
+    });
+},
+
   All: function (begin,after)  {
     var page = this;
     wx.request({
@@ -235,7 +271,9 @@ Page({
       data: {
         dateflag:1,
         date_begin: begin,
-        date_after: after
+        date_after: after,
+        shopping_id:page.data.shopping_id,
+        area:page.data.area
       },
       method: 'POST',
       success: function (res) {
@@ -281,7 +319,9 @@ Page({
         first_id:id,
         dateflag:1,
         date_begin: begin,
-        date_after: after
+        date_after: after,
+        shopping_id:page.data.shopping_id,
+        area:page.data.area
       },
       method: 'POST',
       success: function (res) {
@@ -329,7 +369,9 @@ Page({
         second_id:id,
         dateflag:1,
         date_begin: begin,
-        date_after: after
+        date_after: after,
+        shopping_id:page.data.shopping_id,
+        area:page.data.area
       },
       method: 'POST',
       success: function (res) {
@@ -355,7 +397,4 @@ Page({
       }
     })
   },
-
-
-
 })
