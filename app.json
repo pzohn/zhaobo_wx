@@ -20,7 +20,8 @@
     "pages/royaltydetail/royaltydetail",
     "pages/listdetail/listdetail",
     "pages/leasing/leasing",
-    "pages/express/express"
+    "pages/express/express",
+    "pages/signature/signature"
   ],
   "window": {
     "backgroundTextStyle": "light",
