@@ -156,7 +156,7 @@ App({
     listdetail:{},
     wx_id:0,
     share_id:0,
-    shop_id:5,
+    shop_id:7,
     post_url:'',
     index_style:'../indexdetail/indexdetail',
     fixed_address_flag:false,

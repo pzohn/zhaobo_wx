@@ -1,5 +1,5 @@
 <view class="container">
-  <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">
-   点击授权使用珑玥聪
+  <button bindtap="getUserInfo">
+   点击授权使用母婴爆品供应链
   </button>
 </view>
